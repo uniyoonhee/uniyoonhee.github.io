@@ -54,6 +54,32 @@
     font-size: 7em;
     position: relative;
 }
+.center { 
+    color: #fff;
+    z-index: 100;
+} 
+.txt-rotate:after {
+    content: "";
+    animation: blink 1.5s infinite;
+    font-weight: 100;
+    opacity: 1;
+    border-right: 0.02em solid #fff;
+}
+@keyframes blink {
+    50% {
+      opacity: 0.0;
+    }
+}
+@-webkit-keyframes blink {
+    50% {
+      opacity: 0.0;
+    }
+}
+.blink {
+    animation: blink 1s step-start 0s infinite;
+    -webkit-animation: blink 1s step-start 0s infinite;
+}
+  
 .wrap-scrolldownhoney {
     left: 50%;
     position: absolute;

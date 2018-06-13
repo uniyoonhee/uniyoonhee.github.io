@@ -5,41 +5,41 @@
 	'use strict';
 	
 	/**
-	 * Full scroll main function
-	 */
+ 	* * Full scroll main function
+	*/
 	var fullScroll = function (params) {
-		/**
-		 * Main div
-		 * @type {Object}
-		 */
-		var main = document.getElementById('main');
+	/**
+	* Main div
+	* @type {Object}
+	*/
+	var main = document.getElementById('main');
 		
-		/**
-		 * Sections div
-		 * @type {Array}
-		 */
-		var sections = main.getElementsByTagName('section');
+	/**
+	* Sections div
+	* @type {Array}
+	*/
+	var sections = main.getElementsByTagName('section');
 		
-		/**
-		 * Full page scroll configurations
-		 * @type {Object}
-		 */
-		var defaults = {
-			container : main,
-			sections : sections,
-			animateTime : params.animateTime || 0.7,
-			animateFunction : params.animateFunction || 'ease',
-			maxPosition: sections.length - 1,
-			currentPosition: 0,
-			displayDots: typeof params.displayDots != 'undefined' ? params.displayDots : true,
-			dotsPosition: params.dotsPosition || 'left'
-		};
+	/**
+	* Full page scroll configurations
+	* @type {Object}
+	*/
+	var defaults = {
+		container : main,
+		sections : sections,
+		animateTime : params.animateTime || 0.7,
+		animateFunction : params.animateFunction || 'ease',
+		maxPosition: sections.length - 1,
+		currentPosition: 0,
+		displayDots: typeof params.displayDots != 'undefined' ? 	params.displayDots : true,
+		dotsPosition: params.dotsPosition || 'left'
+	};
 
-		this.defaults = defaults;
-		/**
-		 * Init build
-		 */
-		this.init();
+	this.defaults = defaults;
+	/**
+	* * Init build
+	*/
+	this.init();
 	};
 
 	/**
