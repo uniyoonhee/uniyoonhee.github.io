@@ -2,11 +2,79 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>블로그 테스트</title>
+    <title>Go to Wonderland!</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/fakeLoader.css">
+    <link rel="stylesheet" type="text/css" href="./css/full-page-scroll.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
-    <h1>블로그 테스트</h1>
+    <div id="fakeLoader"></div>
+    <div id="main" class="scroll-container">
+        <section class="section1">
+                <div id="player"></div>
+            <div>
+                <span id="title">Go to Wonderland!</span>
+            </div>
+            <div class="wrap-scrolldownhoney">
+                <div class="scrolldownhoney">
+                    <svg height="30" width="10">
+                        <circle class="scrolldownhoney-c1" cx="5" cy="15" r="2" />
+                        <circle class="scrolldownhoney-c2" cx="5" cy="15" r="2" />
+                    </svg>
+                </div>
+                <strong>Scroll Down</strong>
+            </div>
+        </section>
+        <section class="section2" id="section2">
+            <div>
+                <span>Tab</span>				
+            </div>
+        </section>
+        <section class="section3">
+            <div>
+                <span>캐릭터 1</span>				
+            </div>
+        </section>
+        <section class="section4">
+            <div>
+                <span>캐릭터 2</span>				
+            </div>
+        </section>
+        <section class="section5">
+            <div>
+                <span>캐릭터 3</span>				
+            </div>
+        </section>
+        <section class="section6">
+            <div>
+                <span>캐릭터 4</span>				
+            </div>
+        </section>
+        <section class="section7">
+            <div>
+                <span></span>				
+            </div>
+        </section>
+        <section class="section8">
+            <div>
+                <span></span>				
+            </div>
+        </section>
+    </div>
+
+
+    <script type="text/javascript" src="./js/script.js"></script>
+    <script type="text/javascript" src="./js/full-page-scroll.js"></script>
+    <script type="text/javascript">
+		new fullScroll({
+			displayDots: true,
+			dotsPosition: 'left',
+			animateTime: 0.7,
+			animateFunction: 'ease'
+		});
+    </script>
+    <script src="./js/fakeLoader.js"></script>
 </body>
 </html>
