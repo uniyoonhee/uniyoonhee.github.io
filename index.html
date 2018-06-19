@@ -3,26 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Go to Wonderland!</title>
-    <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./css/full-page-scroll.css">
 </head>
 <body>
-	<div id="page-wrapper"></div>
-	<div id="btn">
-		<div id='top'></div>
-		<div id='middle'></div>
-		<div id='bottom'></div>
-	</div>
-	<div id="box">
-		<div id="items">
-			<a href="#0"><div class="item">Main</div></a>
-			<a href="#1"><div class="item">Character</div></a>
-			<a href="#2"><div class="item">Story</div></a>
-			<a href="#6"><div class="item">Ending</div></a>
-		</div>
-	</div>
     <div id="main" class="scroll-container">
-        <section class="section1" id="main">
+        <section class="section1">
             <div id="player"></div>
                 <div class="center">
                     <span id="title">Go to
@@ -40,94 +27,36 @@
                 <strong>Scroll Down</strong>
             </div>
         </section>
-        <section class="section2" id="character">
-            <div class="flex-gallery">
-				<div class="flex-gallery__item" style="background-image: url(./img/1.jpg)">
-				  <div class="flex-gallery__content">
-					<div>Character 1</div>
-					<div>Alice</div>
-					<div>"I don't know which road to choose."</div>
-				  </div>
-				</div>
-				<div class="flex-gallery__item" style="background-image: url(./img/2.jpg)">
-				  <div class="flex-gallery__content">
-					<div>Character 2</div>
-					<div>Watch Rabbit</div>
-					<div>"I'm late, I'm late."</div>
-				  </div>
-				</div>
-				<div class="flex-gallery__item" style="background-image: url(./img/3.png)">
-				  <div class="flex-gallery__content">
-					<div>Character 3</div>
-					<div>Trump Soldiers</div>
-					<div>"painting the roses red."</div>
-				  </div>
-				</div>
-				<div class="flex-gallery__item" style="background-image: url(./img/4.jpg)">
-				  <div class="flex-gallery__content">
-					<div>Character 4</div>
-					<div>Heart Queen</div>
-					<div>"Off with her head!"</div>
-				  </div>
-				</div>
-			  </div>
+        <section class="section2" id="section2">
+            <div>
+                <span class="container">
+                    <div class="text"></div>
+                </span>
+            </div>
         </section>
         <section class="section3">
-			<div>
-                <span class="story_title">제 1장, 토끼굴 속으로</span>
-            </div>
-            <div class="story">
-            <p id="story1_1">앨리스는 언니와 함께 강둑에 앉아 있었다. 아무 것도 하지 않고 있자니 점차 몹시 지루해졌다.<br>언니가 읽는 책을 한두 번 흘깃 보았는데 거기엔 그림도 없고 대화도 없었다. “그림도 없고 대화도 없으면 책이 도대체 무슨 쓸모가 있는거지?”라고 앨리스는 생각했다.
-
-            그래서 앨리스는 일어나는 것보다 데이지 꽃다발이나 만드는 게 낫겠다고 생각하고는, 데이지 꽃을 뽑기 시작했다.<br>그때, 갑자기 분홍 빛 눈의 하얀 토끼 한 마리가 가까이 뛰어왔다.
-                    
-            그게 딱히 특별할 것이라고는 없었다.<br>심지어 토끼가 “에구구! 에구구! 너무 늦었을거야!”라고 혼잣말하는 것을 들었을 때도, 그렇게 생각했다.</p>
-            <img id="story_ex" src="./img/story1_ex.jpg" alt="임시">
-            <p id="story1_2"> 하지만 토끼가 조끼 주머니에서 시계를 꺼내 보고 서두르자,<br>그제서야 이전에는 조끼를 걸치거나 조끼 주머니에서 시계를 꺼내는 토끼를 한 번도 본 적이 없었다는 것이 스쳐지나갔고,<br>호기심에 불타올라서 토끼를 쫒아 들판을 가로질러 달리기 시작했다.<br>그리고 운좋게도 토끼가 울타리 바로 밑의 큰 토끼굴로 쏙 들어가는 것을 볼 수 있었다.<br>
-                    
-            그 즉시, 앨리스는 도대체 어떻게 다시 빠져 나올 건지는 생각조차 안하고 토끼를 쫓아 굴로 뛰어들었다.</p>
+            <div>
+                <span>캐릭터 1</span>
             </div>
         </section>
         <section class="section4">
-			<div>
-                <span class="story_title">제 2장,</span>
-            </div>
-            <div class="story">
-                <p id="story2_1">앨리스는 문을 열고 안을 보았다. 거기엔 작은 통로가 있었다. 통로는 토끼굴보다 크지 않았다.<br>앨리스는 무릎을 꿇고 안을 들여다 보았다. 마치 덤불 속에 난 작은 통로 같았다. 
-                어두운 통로 너머로 갑자기 환하게 밝아오며 꽃들이 활짝 핀 정원이 보였다.<br>하지만, 이 문으로는 머리도 집어넣을 수 없었다. 
-                어쩔 수 없다는 걸 알게된 앨리스는 혹시 다른 열쇠가 있나 찾아보러 테이블로 돌아왔다.<br>탁자위에 작은 병이 하나 있었다. 병목에 걸린 종이 레이블에는 큰 글씨로 “날 마셔요”라고 적혀 있었다.
-                </p>
-                <img id="story_ex" src="./img/story1_ex.jpg" alt="임시">
-                <p id="story2_2"> 앨리스는 단숨에 마셨다.<br>“이 느낌은 뭐지? 난 망원경처럼 접히는 것 같아”하고 앨리스는 말했다.
-                정말 그랬다.<br>앨리스는 이제 작게 줄어들어 키가 10 인치밖에 되지 않았다.<br>이제 문을 지나 아름다운 정원으로 갈 수 있는 알맞은 크기가 된 것이다. 
-                </p>
+            <div>
+                <span>캐릭터 2</span>
             </div>
         </section>
         <section class="section5">
             <div>
-                <span class="story_title">제 3장, 빨간 장미 정원</span>
-            </div>
-            <div class="story">
-                <p id="story4_1">커다란 장미 나무 한 그루가 정원 입구에 서 있었다. 나무엔 흰 장미가 피었는 데, 세 명의 정원사가 바쁘게 빨갛게 칠하고 있었다.<br>앨리스는 정말 이상하다고 생각하고는 좀 더 살펴보려 가까이 다가갔다.<br>앨리스는 조심스러운 목소리로 “저, 왜 장미를 색칠하고 있는지 말해줄래요?”하고 물었다.</p>
-                <p>둘은 작은 목소리로 이야기를 시작했다.<br>“사실은 원래 여기는 빨간 장미 정원인데 우리가 그만 실수로 흰 장미 한 그루를 심었답니다.<br>만약 여왕께서 이걸 알게 되면, 알다시피, 우리 모두 목이 달아나요. 그래서 보다시피, 아가씨. 우리는 폐하가 오시기 전에 최선을 다하고 있습니다.”
-                </p>
-                <img id="story_ex4" src="./img/story4_ex.jpg" alt="임시">
+                <span>캐릭터 3</span>
             </div>
         </section>
         <section class="section6">
             <div>
-                <span class="story_title">제 4장, </span>
-            </div>
-            <div class="story">
-                <p id="story4_1">?</p>
-                <p>?
-                </p>
-                <img id="story_ex4" src="./img/story4_ex.jpg" alt="임시">
+                <span>캐릭터 4</span>
             </div>
         </section>
         <section class="section7">
             <div>
-                <span class="story_title">끝</span>
+                <span></span>
             </div>
         </section>
         <section class="section8">
@@ -139,6 +68,7 @@
 
 
     <script type="text/javascript" src="./js/script.js"></script>
+    <script type="text/javascript" src="./js/full-page-scroll.js"></script>
     <script type="text/javascript">
 		new fullScroll({
 			displayDots: true,
