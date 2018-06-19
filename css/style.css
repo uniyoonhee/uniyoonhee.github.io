@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Gentium+Book+Basic:700i');
 @import url('https://fonts.googleapis.com/css?family=Song+Myung');
-@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css");
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 body, html {
 	margin: 0;
@@ -166,12 +166,11 @@ body, html {
     transform: translateX(-50%);
 }
 section div {
-    font-style: normal;
     text-align: center;
     position: relative;
 }
 #title{
-    font-family: 'Gentium Book Basic', serif;
+    font-family: 'Nanum Gothic', sans-serif;
     font-size: 100px;
     position: relative;
 }
@@ -237,7 +236,7 @@ section div {
 .section2 {
     background-color: #493268; 
     color: #fff;
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 .flex-gallery {
     display: flex;
@@ -305,7 +304,7 @@ section div {
 p{
     color: #fff;
     display: block;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Nanum Gothic', sans-serif;
     font-size: 100%;
     margin-top: 10px;
 }
