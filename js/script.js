@@ -235,11 +235,10 @@
 })();
 
 window.addEventListener('keydown', function (event) {
-
-		if (sidebarBox.classList.contains('active') && event.keyCode === 27) {
-				sidebarBtn.classList.remove('active');
-				sidebarBox.classList.remove('active');
-		}
+	if (sidebarBox.classList.contains('active') && event.keyCode === 27) {
+			sidebarBtn.classList.remove('active');
+			sidebarBox.classList.remove('active');
+	}
 });
 
 var sidebarBox = document.querySelector('#box'),
@@ -247,17 +246,64 @@ var sidebarBox = document.querySelector('#box'),
     pageWrapper = document.querySelector('#page-wrapper');
 
 sidebarBtn.addEventListener('click', function (event) {
-		sidebarBtn.classList.toggle('active');
-		sidebarBox.classList.toggle('active');
+	sidebarBtn.classList.toggle('active');
+	sidebarBox.classList.toggle('active');
 });
 
 pageWrapper.addEventListener('click', function (event) {
-
-		if (sidebarBox.classList.contains('active')) {
-				sidebarBtn.classList.remove('active');
-				sidebarBox.classList.remove('active');
+	if (sidebarBox.classList.contains('active')) {
+			sidebarBtn.classList.remove('active');
+			sidebarBox.classList.remove('active');
 		}
 });
+// 2. This code loads the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+var player;
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+	height: '385',
+	width: '500',
+	videoId: 'Q93VrYOXSe8',
+	playerVars:{
+		autoplay:0,
+		controls:0,
+		rel:0,
+		fs:0,
+		modestbranding:0,
+		showinfo:0
+	}
+  //   events: {
+  //     'onReady': onPlayerReady,
+  //     'onStateChange': onPlayerStateChange
+  //   }
+  });
+}
+
+// 4. The API will call this function when the video player is ready.
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
+
+// 5. The API calls this function when the player's state changes.
+//    The function indicates that when playing a video (state=1),
+//    the player should play for six seconds and then stop.
+var done = false;
+function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.PLAYING && !done) {
+	setTimeout(stopVideo, 6000);
+	done = true;
+  }
+}
+function stopVideo() {
+  player.stopVideo();
+}
 
 window.addEventListener('keydown', function (event) {
 
@@ -266,74 +312,6 @@ window.addEventListener('keydown', function (event) {
 				sidebarBox.classList.remove('active');
 		}
 });
-
-// 2. This code loads the IFrame Player API code asynchronously.var tag = document.createElement('script');
-
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/player_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-// 3. This function creates an <iframe> (and YouTube player)
-//    after the API code downloads.
-var player;
-function onYouTubeIframeAPIReady() {
-player = new YT.Player('player', {
-    height: '400',
-    width: '545',
-    videoId: 'Q93VrYOXSe8',
-    playerVars:{
-        autoplay:1,
-        controls:0,
-        rel:0,
-        fs:0,
-        modestbranding:0,
-        showinfo:0
-    }
-//   events: {
-//     'onReady': onPlayerReady,
-//     'onStateChange': onPlayerStateChange
-//   }
-    });
-}
-
-// 4. The API will call this function when the video player is ready.
-function onPlayerReady(event) {
-	event.target.playVideo();
-}
-
-// 5. The API calls this function when the player's state changes.
-//    The function indicates that when playing a video (state=1),
-//    the player should play for six seconds and then stop.
-var done = false;
-function onPlayerStateChange(event) {
-	if (event.data == YT.PlayerState.PLAYING && !done) {
-        setTimeout(stopVideo, 6000);
-        done = true;
-    }
-}
-function stopVideo() {
-    player.stopVideo();
-}
-
-const items = document.querySelectorAll('.flex-gallery__item');
-
-items.forEach( item => item.addEventListener('click', showItem));
-items.forEach( item => item.addEventListener('transitionend', activeItem));
-
-function showItem ( e ) {
-  	if(this.classList.contains('active')){
-    	return false;
-  	}
-  	items.forEach(item => item.classList.remove('active'));
-  	this.classList.toggle('active');
-};
-
-function activeItem ( e ) {
-  	if ( e.propertyName.includes('flex') ) {
-    	this.classList.toggle('visible');
-  	}
-}; 
 
 var TxtRotate = function(el, toRotate, period) {
 	this.toRotate = toRotate;
@@ -370,14 +348,14 @@ TxtRotate.prototype.tick = function() {
 	} else if (this.isDeleting && this.txt === "") {
 	  	this.isDeleting = false;
 	  	this.loopNum++;
-	  	delta = 500;
+	  	delta = 300;
 	}
   
 	setTimeout(function() {
 	  	that.tick();
 	}, delta);
 };
-  
+
 window.onload = function() {
 	var elements = document.getElementsByClassName("txt-rotate");
 	for (var i = 0; i < elements.length; i++) {
@@ -388,3 +366,76 @@ window.onload = function() {
 	  	}
 	}
 };
+
+const items = document.querySelectorAll('.flex-gallery__item');
+
+items.forEach( item => item.addEventListener('click', showItem));
+items.forEach( item => item.addEventListener('transitionend', activeItem));
+
+function showItem (e) {
+  	if(this.classList.contains('active')){
+		this.classList.remove('active');
+		return false;
+  	}
+  	items.forEach(item => item.classList.remove('active'));
+		this.classList.toggle('active');
+};
+function activeItem (e) {
+  	if ( e.propertyName.includes('flex')){
+		this.classList.toggle('visible');
+	}
+	// items.forEach( item => item.addEventListener('click', function(e){
+	// 	items.forEach(item => item.classList.remove('active'));
+	// }));
+};
+
+$(function (){
+	$("#button").click(function (){
+  	$("#story2_1, #clock").toggle();
+  });
+});
+$(function (){
+	$("#button2").click(function (){
+  	$("#story1_1").toggle();
+  });
+});
+$(function (){
+	$("#button3").click(function (){
+  	$("#story3_1, #box-div").toggle();
+  });
+});
+
+
+const secondHand = document.querySelector('.second-hand');
+const minsHand = document.querySelector('.min-hand');
+const hourHand = document.querySelector('.hour-hand');
+
+function setDate() {
+  	const now = new Date();
+
+  	const seconds = now.getSeconds();
+  	const secondsDegrees = ((seconds / 60) * 360) + 90;
+  	secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+  	const mins = now.getMinutes();
+  	const minsDegrees = ((mins / 60) * 360) + ((seconds/60)*6) + 90;
+  	minsHand.style.transform = `rotate(${minsDegrees}deg)`;
+
+  	const hour = now.getHours();
+  	const hourDegrees = ((hour / 12) * 360) + ((mins/60)*30) + 90;
+  	hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+}
+setInterval(setDate, 1000);
+setDate(); 
+
+var divElement = document.getElementById('box-div');
+var _toggle = true;
+function callback(){
+	if(_toggle){
+		divElement.style.backgroundColor = '#6e2d2d';
+		_toggle = false;
+	}else{
+		divElement.style.backgroundColor = '#fff';
+		_toggle = true;
+	}};
+divElement.addEventListener('click', callback);
