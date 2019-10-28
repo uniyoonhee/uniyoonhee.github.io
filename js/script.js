@@ -1,441 +1,198 @@
-/**
- * Full page
- */
-(function () {
-	'use strict';
-	
-	/**
- 	* * Full scroll main function
-	*/
-	var fullScroll = function (params) {
-	/**
-	* Main div
-	* @type {Object}
-	*/
-	var main = document.getElementById('main');
-		
-	/**
-	* Sections div
-	* @type {Array}
-	*/
-	var sections = main.getElementsByTagName('section');
-		
-	/**
-	* Full page scroll configurations
-	* @type {Object}
-	*/
-	var defaults = {
-		container : main,
-		sections : sections,
-		animateTime : params.animateTime || 0.7,
-		animateFunction : params.animateFunction || 'ease',
-		maxPosition: sections.length - 1,
-		currentPosition: 0,
-		displayDots: typeof params.displayDots != 'undefined' ? 	params.displayDots : true,
-		dotsPosition: params.dotsPosition || 'left'
-	};
-
-	this.defaults = defaults;
-	/**
-	* * Init build
-	*/
-	this.init();
-	};
-
-	/**
-	 * Init plugin
-	 */
-	fullScroll.prototype.init = function () {
-		this.buildSections()
-			.buildDots()
-			.buildPublicFunctions()
-			.addEvents();
-
-		var anchor = location.hash.replace('#', '').split('/')[0];
-		location.hash = 0;
-		this.changeCurrentPosition(anchor);
-	};
-
-	/**
-	 * Build sections
-	 * @return {Object} this(fullScroll)
-	 */
-	fullScroll.prototype.buildSections = function () {
-		var sections = this.defaults.sections;
-		for (var i = 0; i < sections.length; i++) {
-			sections[i].setAttribute('data-index', i);
-		}
-		return this;
-	};
-
-	/**
-	 * Build dots navigation
-	 * @return {Object} this (fullScroll)
-	 */
-	fullScroll.prototype.buildDots = function () {		
-		this.ul = document.createElement('ul');
-		this.ul.classList.add('dots');
-		this.ul.classList.add(this.defaults.dotsPosition == 'right' ? 'dots-right' : 'dots-left');
-		var _self = this;
-		var sections = this.defaults.sections;		
-
-		for (var i = 0; i < sections.length; i++) {
-			var li = document.createElement('li');
-			var a = document.createElement('a');
-		
-			a.setAttribute('href', '#' + i);			
-			li.appendChild(a);
-			_self.ul.appendChild(li);
-		}
-
-		this.ul.childNodes[0].firstChild.classList.add('active');
-
-		if (this.defaults.displayDots) {
-			document.body.appendChild(this.ul);
-		}
-
-		return this;
-	};
-
-	/**
-	 * Add Events
-	 * @return {Object} this(fullScroll)
-	 */
-	fullScroll.prototype.addEvents = function () {
-		
-		if (document.addEventListener) {
-			document.addEventListener('mousewheel', this.mouseWheelAndKey, false);
-			document.addEventListener('wheel', this.mouseWheelAndKey, false);
-			document.addEventListener('keyup', this.mouseWheelAndKey, false);
-			document.addEventListener('touchstart', this.touchStart, false);
-			document.addEventListener('touchend', this.touchEnd, false);
-			window.addEventListener("hashchange", this.hashChange, false);
-
-			/**
-			 * Enable scroll if decive don't have touch support
-			 */
-			if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-				if(!('ontouchstart' in window)){
-					document.body.style = "overflow: scroll;";
-					document.documentElement.style = "overflow: scroll;";
-				}
-			}			
-
-		} else {
-			document.attachEvent('onmousewheel', this.mouseWheelAndKey, false);
-			document.attachEvent('onkeyup', this.mouseWheelAndKey, false);
-		}
-		
-		return this;
-	};	
-
-	/**
-	 * Build public functions
-	 * @return {[type]} [description]
-	 */
-	fullScroll.prototype.buildPublicFunctions = function () {
-		var mTouchStart = 0;
-		var mTouchEnd = 0;
-		var _self = this;
-
-		this.mouseWheelAndKey = function (event) {
-			if (event.deltaY > 0 || event.keyCode == 40) {	
-				_self.defaults.currentPosition ++;
-				_self.changeCurrentPosition(_self.defaults.currentPosition);				
-			} else if (event.deltaY < 0 || event.keyCode == 38) {
-				_self.defaults.currentPosition --;
-				_self.changeCurrentPosition(_self.defaults.currentPosition);	
-			}
-			_self.removeEvents();
-		};
-
-		this.touchStart = function (event) {
-			mTouchStart = parseInt(event.changedTouches[0].clientY);
-			mTouchEnd = 0;
-		};
-
-		this.touchEnd = function (event) {
-			mTouchEnd = parseInt(event.changedTouches[0].clientY);
-			if (mTouchEnd - mTouchStart > 100 || mTouchStart - mTouchEnd > 100) {
-				if (mTouchEnd > mTouchStart) {
-					_self.defaults.currentPosition --;
-				} else {
-					_self.defaults.currentPosition ++;					
-				}
-				_self.changeCurrentPosition(_self.defaults.currentPosition);
-			}			
-		};
-
-		this.hashChange = function (event) {
-			if (location) {
-				var anchor = location.hash.replace('#', '').split('/')[0];
-				if (anchor !== "") {
-					if (anchor < 0) {
-						_self.changeCurrentPosition(0);
-					} else if (anchor > _self.defaults.maxPosition) {
-						_self.changeCurrentPosition(_self.defaults.maxPosition);
-					} else {
-						_self.defaults.currentPosition = anchor;
-						_self.animateScroll();
-					}					
-				}				
-			}
-		};
-
-		this.removeEvents = function () {
-			if (document.addEventListener) {
-			document.removeEventListener('mousewheel', this.mouseWheelAndKey, false);
-			document.removeEventListener('wheel', this.mouseWheelAndKey, false);
-			document.removeEventListener('keyup', this.mouseWheelAndKey, false);
-			document.removeEventListener('touchstart', this.touchStart, false);
-			document.removeEventListener('touchend', this.touchEnd, false);
-
-			} else {
-				document.detachEvent('onmousewheel', this.mouseWheelAndKey, false);
-				document.detachEvent('onkeyup', this.mouseWheelAndKey, false);
-			}
-
-			setTimeout(function(){
-				_self.addEvents();
-			}, 600);
-		};
-
-		this.animateScroll = function () {
-			var animateTime = this.defaults.animateTime;
-			var animateFunction = this.defaults.animateFunction;
-			var position = this.defaults.currentPosition * 100;
-
-			this.defaults.container.style.webkitTransform = 'translateY(-' + position + '%)';
-			this.defaults.container.style.mozTransform = 'translateY(-' + position + '%)';
-			this.defaults.container.style.msTransform = 'translateY(-' + position + '%)';
-			this.defaults.container.style.transform = 'translateY(-' + position + '%)';
-			this.defaults.container.style.webkitTransition = 'all ' + animateTime + 's ' + animateFunction;
-			this.defaults.container.style.mozTransition = 'all ' + animateTime + 's ' + animateFunction;
-			this.defaults.container.style.msTransition = 'all ' + animateTime + 's ' + animateFunction;
-			this.defaults.container.style.transition = 'all ' + animateTime + 's ' + animateFunction;
-
-			for (var i = 0; i < this.ul.childNodes.length; i++) {
-					this.ul.childNodes[i].firstChild.classList.remove('active');
-					if (i == this.defaults.currentPosition) {
-					this.ul.childNodes[i].firstChild.classList.add('active');		
-				}
-			}
-		};
-
-		this.changeCurrentPosition = function (position) {
-			if (position !== "") {
-				_self.defaults.currentPosition = position;
-				location.hash = _self.defaults.currentPosition;
-			}	
-		};
-
-		return this;
-	};
-	window.fullScroll = fullScroll;
-})();
-
-window.addEventListener('keydown', function (event) {
-	if (sidebarBox.classList.contains('active') && event.keyCode === 27) {
-			sidebarBtn.classList.remove('active');
-			sidebarBox.classList.remove('active');
-	}
-});
-
-var sidebarBox = document.querySelector('#box'),
-    sidebarBtn = document.querySelector('#btn'),
-    pageWrapper = document.querySelector('#page-wrapper');
-
-sidebarBtn.addEventListener('click', function (event) {
-	sidebarBtn.classList.toggle('active');
-	sidebarBox.classList.toggle('active');
-});
-
-pageWrapper.addEventListener('click', function (event) {
-	if (sidebarBox.classList.contains('active')) {
-			sidebarBtn.classList.remove('active');
-			sidebarBox.classList.remove('active');
-		}
-});
-// 2. This code loads the IFrame Player API code asynchronously.
-var tag = document.createElement('script');
-
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-// 3. This function creates an <iframe> (and YouTube player)
-//    after the API code downloads.
-var player;
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player('player', {
-	height: '385',
-	width: '500',
-	videoId: 'Q93VrYOXSe8',
-	playerVars:{
-		autoplay:0,
-		controls:0,
-		rel:0,
-		fs:0,
-		modestbranding:0,
-		showinfo:0
-	}
-  //   events: {
-  //     'onReady': onPlayerReady,
-  //     'onStateChange': onPlayerStateChange
-  //   }
+$(document).ready(function() {
+// 스크롤 메뉴
+var lastScrollTop = 0, delta = 15;
+    $(window).scroll(function(e) {
+    var st = $(this).scrollTop();
+    if (Math.abs(lastScrollTop - st) <= delta) return;
+    if ((st > lastScrollTop) && (lastScrollTop > 0)) {
+        $("header").css({
+            "top": "-80px"
+        });
+    }else {
+        $("header").css({
+            "top": "0"
+        });
+    }
+    lastScrollTop = st;
   });
-}
+// 스크롤 메뉴
 
-// 4. The API will call this function when the video player is ready.
-function onPlayerReady(event) {
-  event.target.playVideo();
-}
-
-// 5. The API calls this function when the player's state changes.
-//    The function indicates that when playing a video (state=1),
-//    the player should play for six seconds and then stop.
-var done = false;
-function onPlayerStateChange(event) {
-  if (event.data == YT.PlayerState.PLAYING && !done) {
-	setTimeout(stopVideo, 6000);
-	done = true;
-  }
-}
-function stopVideo() {
-  player.stopVideo();
-}
-
-window.addEventListener('keydown', function (event) {
-
-		if (sidebarBox.classList.contains('active') && event.keyCode === 27) {
-				sidebarBtn.classList.remove('active');
-				sidebarBox.classList.remove('active');
-		}
-});
-
-var TxtRotate = function(el, toRotate, period) {
-	this.toRotate = toRotate;
-	this.el = el;
-	this.loopNum = 0;
-	this.period = parseInt(period, 10) || 2000;
-	this.txt = "";
-	this.tick();
-	this.isDeleting = false;
-};
-  
-TxtRotate.prototype.tick = function() {
-	var i = this.loopNum % this.toRotate.length;
-	var fullTxt = this.toRotate[i];
-  
-	if (this.isDeleting) {
-	  	this.txt = fullTxt.substring(0, this.txt.length - 1);
-	} else {
-	  	this.txt = fullTxt.substring(0, this.txt.length + 1);
-	}
-  
-	this.el.innerHTML = '<span class="wrap">' + this.txt + "</span>";
-  
-	var that = this;
-	var delta = 300 - Math.random() * 100;
-  
-	if (this.isDeleting) {
-	  	delta /= 2;
-	}
-  
-	if (!this.isDeleting && this.txt === fullTxt) {
-	  	delta = this.period;
-	  	this.isDeleting = true;
-	} else if (this.isDeleting && this.txt === "") {
-	  	this.isDeleting = false;
-	  	this.loopNum++;
-	  	delta = 300;
-	}
-  
-	setTimeout(function() {
-	  	that.tick();
-	}, delta);
-};
-
-window.onload = function() {
-	var elements = document.getElementsByClassName("txt-rotate");
-	for (var i = 0; i < elements.length; i++) {
-	  	var toRotate = elements[i].getAttribute("data-rotate");
-	  	var period = elements[i].getAttribute("data-period");
-	  	if (toRotate) {
-			new TxtRotate(elements[i], JSON.parse(toRotate), period);
-	  	}
-	}
-};
-
-const items = document.querySelectorAll('.flex-gallery__item');
-
-items.forEach( item => item.addEventListener('click', showItem));
-items.forEach( item => item.addEventListener('transitionend', activeItem));
-
-function showItem (e) {
-  	if(this.classList.contains('active')){
-		this.classList.remove('active');
-		return false;
-  	}
-  	items.forEach(item => item.classList.remove('active'));
-		this.classList.toggle('active');
-};
-function activeItem (e) {
-  	if ( e.propertyName.includes('flex')){
-		this.classList.toggle('visible');
-	}
-	// items.forEach( item => item.addEventListener('click', function(e){
-	// 	items.forEach(item => item.classList.remove('active'));
-	// }));
-};
-
-$(function (){
-	$("#button").click(function (){
-  	$("#story2_1, #clock").toggle();
+// 메뉴 이동
+$('li a').click(function(){
+    $('html, body').animate({
+    scrollTop: $( $.attr(this, 'href')).offset().top
+    }, 500);
+    return false;
   });
+// 메뉴 이동
+
+// 마우스 패럴랙스
+var currentX = '';
+var currentY = '';
+var movementConstant = .020;
+$(document).mousemove(function(e) {
+    if(currentX == '') currentX = e.pageX;
+    var xdiff = e.pageX - currentX;
+    currentX = e.pageX;
+    if(currentY == '') currentY = e.pageY;
+    var ydiff = e.pageY - currentY;
+    currentY = e.pageY; 
+    $('.parallax img').each(function(i, el) {
+        var movement = (i + 1) * (xdiff * movementConstant);
+	    var movementy = (i + 1) * (ydiff * movementConstant);
+        var newX = $(el).position().left + movement;
+	    var newY = $(el).position().top + movementy;
+        $(el).css('left', newX + 'px');
+        $(el).css('top', newY + 'px');
+    });
 });
-$(function (){
-	$("#button2").click(function (){
-  	$("#story1_1").toggle();
-  });
-});
-$(function (){
-	$("#button3").click(function (){
-  	$("#story3_1, #box-div").toggle();
-  });
-});
+// 마우스 패럴랙스
 
+// 자동 슬라이드
+timer();
+var current=16;
+var $interval;
 
-const secondHand = document.querySelector('.second-hand');
-const minsHand = document.querySelector('.min-hand');
-const hourHand = document.querySelector('.hour-hand');
-
-function setDate() {
-  	const now = new Date();
-
-  	const seconds = now.getSeconds();
-  	const secondsDegrees = ((seconds / 60) * 360) + 90;
-  	secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
-
-  	const mins = now.getMinutes();
-  	const minsDegrees = ((mins / 60) * 360) + ((seconds/60)*6) + 90;
-  	minsHand.style.transform = `rotate(${minsDegrees}deg)`;
-
-  	const hour = now.getHours();
-  	const hourDegrees = ((hour / 12) * 360) + ((mins/60)*30) + 90;
-  	hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+function timer(){
+    var $interval=setInterval(function(){
+        slide()
+    },1000);  
 }
-setInterval(setDate, 1000);
-setDate(); 
 
-var divElement = document.getElementById('box-div');
-var _toggle = true;
-function callback(){
-	if(_toggle){
-		divElement.style.backgroundColor = '#6e2d2d';
-		_toggle = false;
-	}else{
-		divElement.style.backgroundColor = '#fff';
-		_toggle = true;
-	}};
-divElement.addEventListener('click', callback);
+function slide(){
+    $(".bannerbox").animate({left:"-=393px"},3000,function(){
+        $(this).css({"left":0});
+        $(".bannerbox").append( $(".slidebanner ul").children(".bannerbox li").eq(0) );
+    });    
+    current++;
+    if(current==16)current=0;
+}
+// 자동 슬라이드
+
+
+// 페이드 인
+$(window).scroll( function(){
+    $('.pb_section').each( function(i){
+        var bottom_of_element = $(this).offset().top + $(this).outerHeight();
+        var bottom_of_window = $(window).scrollTop() + $(window).height();
+        if( bottom_of_window > bottom_of_element ){
+            $(this).animate({'opacity':'1','margin-top':'100px'},1000);
+        }
+    }); 
+    $('.strategy3 img').each( function(i){
+        bottom_of_element = $(this).offset().top + $(this).outerHeight();
+        bottom_of_window = $(window).scrollTop() + $(window).height();
+            
+        if( bottom_of_window > bottom_of_element ){
+            $(this).animate({'opacity':'1','margin-top':'-110px'},1000);
+        }  
+    }); 
+    $('.strategy2 div').each( function(i){
+        bottom_of_element = $(this).offset().top + $(this).outerHeight();
+        bottom_of_window = $(window).scrollTop() + $(window).height();
+            
+        if( bottom_of_window > bottom_of_element ){
+            $(this).animate({'opacity':'1','margin-top':'0px'},1000);
+        }  
+    }); 
+    $('.fade1').each( function(i){
+        bottom_of_element = $(this).offset().top + $(this).outerHeight();
+        bottom_of_window = $(window).scrollTop() + $(window).height();
+                
+        if( bottom_of_window > bottom_of_element ){
+            $(this).animate({'opacity':'1','margin-top':'0px'},1000);
+        }
+    });
+    $('.fade2').each( function(i){
+            
+        bottom_of_element = $(this).offset().top + $(this).outerHeight();
+        bottom_of_window = $(window).scrollTop() + $(window).height();
+                
+        if( bottom_of_window > bottom_of_element ){
+            $(this).animate({'opacity':'1','margin-top':'0px'},1000);
+        }
+    }); 
+    $('.fade3').each( function(i){
+            
+        bottom_of_element = $(this).offset().top + $(this).outerHeight();
+        bottom_of_window = $(window).scrollTop() + $(window).height();
+                
+        if( bottom_of_window > bottom_of_element ){
+            $(this).animate({'opacity':'1','margin-top':'0px'},1000);
+        }
+                
+    }); 
+    $('.qrcord').each( function(i){
+            
+        bottom_of_element = $(this).offset().top + $(this).outerHeight();
+        bottom_of_window = $(window).scrollTop() + $(window).height();
+                
+        if( bottom_of_window > bottom_of_element ){
+            $(this).animate({'opacity':'1','margin-top':'1400px'},1200);
+        }
+                
+    }); 
+    $('.com').each( function(i){
+            
+        bottom_of_element = $(this).offset().top + $(this).outerHeight();
+        bottom_of_window = $(window).scrollTop() + $(window).height();
+                
+        if( bottom_of_window > bottom_of_element ){
+            $(this).animate({'opacity':'1','margin-top':'0px'},1200);
+        }
+                
+    }); 
+    $('.mock_fade').each( function(i){
+            
+        bottom_of_element = $(this).offset().top + $(this).outerHeight();
+        bottom_of_window = $(window).scrollTop() + $(window).height();
+                
+        if( bottom_of_window > bottom_of_element ){
+            $(this).animate({'opacity':'1','margin-top':'0px'},1200);
+        }
+                
+    }); 
+});
+// 페이드 인
+
+// 클릭
+$( "a#click" ).click(function(e) {
+    $(".feedback a").detach();
+    $( "div#feedback2" ).fadeIn( 1600, function() {
+      $( "div#feedback3" ).fadeIn( 1600,function() {
+        $( "div#feedback4" ).fadeIn(1600)
+      });
+    });
+    return false;
+});
+// 클릭
+
+
+// 마우스 이벤트
+var $img = $('#img_ch');
+$img.on('mouseover', function(e){
+    $('#img_ch').find('p').css('opacity', 1);
+}).on('mouseout', function(e){
+    $('#img_ch').find('p').css('opacity', 0);
+});
+var $img2 = $('#img_ch2');
+$img2.on('mouseover', function(e){
+    $('#img_ch2').find('p').css('opacity', 1);
+}).on('mouseout', function(e){
+    $('#img_ch2').find('p').css('opacity', 0);
+});
+var $img3 = $('#img_ch3');
+$img3.on('mouseover', function(e){
+    $('#img_ch3').find('p').css('opacity', 1);
+}).on('mouseout', function(e){
+    $('#img_ch3').find('p').css('opacity', 0);
+});
+var $img4 = $('#img_ch4');
+$img4.on('mouseover', function(e){
+     $('#img_ch4').find('p').css('opacity', 1);
+}).on('mouseout', function(e){
+    $('#img_ch4').find('p').css('opacity', 0);
+});
+// 마우스 이벤트
+
+});
