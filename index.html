@@ -2,151 +2,300 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Go to Wonderland!</title>
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="shortcut icon" href="./img/favicon.ico"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>따고 - 맞춤교육으로 정확하게 운전면허 따기!</title>
+    <link type="text/css" rel="stylesheet" href="./css/style.css" />
+    <link type="text/css" rel="stylesheet" href="./css/reset.css" />
+    <script src="./js/libs/jquery/jquery-3.4.1.min.js" type="text/javascript"></script>
 </head>
-<body>
-	<div id="page-wrapper"></div>
-	<div id="btn">
-		<div id='top'></div>
-		<div id='middle'></div>
-		<div id='bottom'></div>
-	</div>
-	<div id="box">
-		<div id="items">
-			<a href="#0"><div class="item">Main</div></a>
-			<a href="#1"><div class="item">Character</div></a>
-			<a href="#2"><div class="item">Story</div></a>
-			<a href="#5"><div class="item">Ending</div></a>
-		</div>
-	</div>
-    <div id="main" class="scroll-container">
-        <section class="section1" id="main">
-                <div class="center">
-                    <span id="title">
-                    <span class="txt-rotate" data-period="2000" data-rotate='["Go to Wonderland!"]'></span>
-                    <span class="typed-cursor"></span>
-                    </span>
-                </div>
-            <div class="wrap-scrolldownhoney">
-                <div class="scrolldownhoney">
-                    <svg height="30" width="10">
-                        <circle class="scrolldownhoney-c1" cx="5" cy="15" r="2" />
-                        <circle class="scrolldownhoney-c2" cx="5" cy="15" r="2" />
-                    </svg>
-                </div>
-                <strong>Scroll Down</strong>
+<body class="no-drag">
+    <header class="nav-down" id="fixed_menu">
+        <h1 id="header_logo">
+            <a href="index.html"><img src="./img/logo.jpg" id="logo" /></a>
+        </h1>
+        <ul id="main_menu">
+            <li id="home"><a href=".home">HOME</a></li>
+            <li id="project"><a href="#pr_title">PROJECT</a></li>
+            <li id="design"><a href="#de_title">DESIGN</a></li>
+            <li id="app"><a href="#ap_title">APP</a></li>
+            <li id="team"><a href=".team">TEAM</a></li>
+        </ul>
+    </header>
+
+
+    <div class="home">
+            <img src="./img/bg1.png" id="bg1"/>
+            <div class="parallax">
+            <img src="./img/bg2.png" id="bg2"/>
+            <img src="./img/bg3.png" id="bg3"/>
+            <img src="./img/bg4.png" id="bg4"/>
+            <img src="./img/bg5.png" id="bg5"/>
+            <img src="./img/bg6.png" id="bg6"/>
             </div>
-        </section>
-        <section class="section2" id="character">
-            <div class="flex-gallery">
-				<div class="flex-gallery__item" style="background-image: url(./img/1.jpg)">
-				  <div class="flex-gallery__content">
-					<div>Character 1</div>
-					<div>Alice</div>
-					<div>"I don't know which road to choose."</div>
-				  </div>
-				</div>
-				<div class="flex-gallery__item" style="background-image: url(./img/2.jpg)">
-				  <div class="flex-gallery__content">
-					<div>Character 2</div>
-					<div>Watch Rabbit</div>
-					<div>"Oh dear! Oh dear! I shell be late!"</div>
-				  </div>
-                </div>
-                <div class="flex-gallery__item" style="background-image: url(./img/3.jpg)">
-                    <div class="flex-gallery__content">
-                      <div>Character 3</div>
-                      <div>Cheshire Cat</div>
-                      <div>"We're all mad in here.</div>
-                    </div>
-                  </div>
-				<div class="flex-gallery__item" style="background-image: url(./img/3.png)">
-				  <div class="flex-gallery__content">
-					<div>Character 4</div>
-					<div>Trump Soldiers</div>
-					<div>"painting the roses red."</div>
-				  </div>
-				</div>
-				<div class="flex-gallery__item" style="background-image: url(./img/4.jpg)">
-				  <div class="flex-gallery__content">
-					<div>Character 5</div>
-					<div>Heart Queen</div>
-					<div>"Off with her head!"</div>
-				  </div>
-				</div>
-			  </div>
-        </section>
-        <section class="section3">
-			<div>
-                <span class="story_title">Alice.</span>
+
+            <div id="home_title"><img src="./img/big_logo.jpg" />
             </div>
-            <div id="button2">READ</div>
-            <div id="player"></div>
-            <div class="story">
-            <p id="story1_1">앨리스는 언니와 함께 강둑에 앉아 있었다. 아무 것도 하지 않고 있자니 점차 몹시 지루해졌다.<br>그래서 앨리스는 일어나는 것보다 데이지 꽃다발이나 만드는 게 낫겠다고 생각하고는, 데이지 꽃을 뽑기 시작했다.<br>그때, 갑자기 분홍 빛 눈의 하얀 토끼 한 마리가 가까이 뛰어왔다.
-                    
-            그게 딱히 특별할 것이라고는 없었다.<br>심지어 토끼가 “에구구! 에구구! 너무 늦었을거야!”라고 혼잣말하는 것을 들었을 때도, 그렇게 생각했다.</p>
-        </section>
-        <section class="section4">
-			<div>
-                <span class="story_title2">Watch Rabbit.</span>
-            </div>
-            <div id="button">READ</div>
-            <div class="story_2">
-                <p id="story2_1">토끼는 조끼 주머니에서 시계를 꺼내 보고 서둘렀다.<br>조끼를 걸치거나 조끼 주머니에서 시계를 꺼내는 토끼를 한 번도 본 적이 없었다.<br>토끼는 울타리 바로 밑의 큰 토끼굴로 쏙 들어가 버렸다.<br>
-                    
-                그 즉시, 앨리스는 도대체 어떻게 다시 빠져 나올 건지는 생각조차 안하고 토끼를 쫓아 굴로 뛰어들었다.
-                </p>
-            </div>
-            <div class="clock" id="clock">
-                <div class="outer-clock-face">
-                  <div class="marking marking-one"></div>
-                  <div class="marking marking-two"></div>
-                  <div class="marking marking-three"></div>
-                  <div class="marking marking-four"></div>
-                  <div class="inner-clock-face">
-                    <div class="hand hour-hand"></div>
-                    <div class="hand min-hand"></div>
-                    <div class="hand second-hand"></div>
-                  </div>
-                </div>
-              </div>
-        </section>
-        <section class="section5">
-            <div>
-                <span class="story_title3">Trump Soldiers.</span>
-            </div>
-            <div id="button3">READ</div>
-            <div class="story_3">
-                <p id="story3_1">앨리스는 조심스러운 목소리로 “저, 왜 장미를 색칠하고 있는지 말해줄래요?”하고 물었다.<br>
-                둘은 작은 목소리로 이야기를 시작했다.<br>“왜냐면, 사실은, 보다시피, 아가씨. 원래 여기는 빨간 장미 정원인데 우리가 그만 실수로 흰 장미 한 그루를 심었답니다.<br>만약 여왕께서 이걸 알게 되면, 알다시피, 우리 모두 목이 달아나요.<br>그래서 보다시피, 아가씨. 우리는 폐하가 오시기 전에 최선을 다하고 있습니다.”<br>“여왕님이다! 여왕님!”<br>그러자 세 정원사는 엎드려서 얼굴이 자신들의 몸만큼 납작해질 정도로 땅에 붙였다.</p>
-            </div>
-            <div class="box" id="box-div"></div>
-        </section>
-        <div id="main" class="scroll-container">
-        <section class="section6" id="main">
-            <div class="center">
-                <span id="title">
-                    <span class="txt-rotate" data-period="2000" data-rotate='["End.."]'></span>
-                    <span class="typed-cursor"></span>
-                </span>
-            </div>
-        </section>
+            <div id="home_p">맞춤교육으로 정확하게<br /> 운전면허 따기!</div>
+
+        <div id="pl">
+            <a href="#">기획서 다운로드</a>
+        </div>
+        <div id="pr">
+            <a href="https://cloud.protopie.io/p/8cc470c365" target="_blank">프로토타입</a>
+        </div>
+    </div>
+    <!--<div class="home_illust_item home_illust_primary">
+        <div class="home_illust_item_inner"></div>
+    </div>-->
+    <div class="project">
+        <!--<div class="home_illust_piont home_illust_primary_point"></div>-->
+        <div class="pr_back_img">
+            <div class="pr_back_img_inner"></div>
+        </div>
+        <div id="pr_title">Project</div>
+        <div id="pr_back">Background
+            <p>기존 운전면허학원은 체계적이지 않고 구시대적인 시스템, 강사의 문제와 부담스러운 가격 등의 문제점을 가지고 있습니다. 이러한<br />문제점은 높은 초보운전자 사고율로 직결됩니다. 그리하여 낙후된 운전 면허학원 시스템을 개선하고, 수험생 맞춤관리를 도와주는<br />'따고' 앱 서비스를 기획했습니다.</p>
+        </div>
+        <iframe id="video" width="1920" height="1080" src="https://www.youtube.com/embed/8928qjz3tRw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        <div class="problem">
+            <div class="problem_inner"></div>
+        </div>
+        <div class="pro_section">
+        <div id="pr_title2">Project</div>
+        <div id="pr_back2">Problem</div>
+        <div class="pb_section">
+        <div id="pb_1">
+            운전면허 부실교육 문제
+            <p>운전면허학원의 부실교육으로 인해<br />초보운전자 사고율이 36.4%로 매우 높다.</p>
+        </div>
+        <div id="pb_2">
+            불법운전면허학원 多
+            <p>불법운전면허학원의 피해금액이<br />8억, 11억, 15억 등 매우 크다.</p>
+        </div>
+        <div id="pb_3">
+            낙후된 운전면허학원 시스템
+            <p>1. 수업 스케줄을 예약 / 변경할 때에 직접안내<br />데스크에 가서 진행 해야한다.<br />2. 셔틀버스를 호출할 때에 하루 전날 직접 전화를<br />통해서 예약 해야한다.<br />3. 전반적인 시스템이 안내데스크를 꼭 거쳐야 한다.<br />4. 수업 후 자신의 점수와 부족한 점을 알기 어렵다.</p>
+        </div>
+        <div id="pb_4">
+            강사 문제
+            <p>1. 강사가 랜덤으로 배정되어 어떤 강사에게 수업을<br />받는지 알 수 없다<br />2. 자신과 맞는 강사를 직접 선택할 수 없다.<br />3. 강사가 매번 바뀌어서 수업 스타일이 달라 혼란을<br />겪을 수 있다.<br /></p>
+        </div>
+        </div>
+        </div>
+
+        <div class="strategy">
+            <div class="strategy_inner"></div>
+        </div>
+
+        <div class="strategy2">
+            <div class="strategy_inner2"></div>
+        </div>
+
+        <div class="strategy3">
+            <p>안내데스크의 역할이 '따고'어플리케이션으로 대체되면서, 안내데스크 직원들은 업무의 효율을 높힐 수 있고 학원생들은 번거로운 절차를<br />간소화 시킬 수 있습니다.</p>
+            <img src="./img/strategy3.png" />
+        </div>
+
+        <div class="exef">
+        <div class="ee_inner"></div>
+        </div>
+        <div class="exef_section">
+        <div id="ee_back">Expectation Effectiveness</div>
+        <div class="ee_section">
+        <div id="ee_1">
+            불법 운전면허학원 문제근절
+        </div>
+        <div id="ee_2">
+            국민들의 운전 능력 향상
+        </div>
+        <div id="ee_3">
+            운전면허학원 교육의 질 상승
+        </div>
+        <div id="ee_4">
+            초보 운전자의 사고율 하락
+        </div>
+        </div>
+        </div>
     </div>
 
+    <div class="design">
+        <div class="de_inner"></div>
+        <div class="fade1">
+        <div id="de_title">Design</div>
+        <div id="de_key">Design Keyword
+            <p>Trust<br />Information<br />Simple<br />Young</p>
+        </div>
+        </div>
+        <div class="fade2">
+        <div id="de_color">
+            <img src="./img/de_color.png"/>
+            <p>따고는 신뢰감, 정보전달, 심플함, 젊음 네 가지 키워드를 갖고 디자인 하였습니다. 컬러는 신호등의 초록불과 안전을 상징하는<br />녹색에 칙근한이미지를 주기 위해 트렌디함을 가미한 민트컬러를 사용했습니다. 따고의 아이콘은 로고의 둥근 쉐입을 토대로<br />디자인 하였으며, 면이 채워지지 않은 라인 아이콘을 사용하여 간결한 느낌의 앱 디자인과 어우러지도록 합니다.</p>
+        </div>
+        </div>
 
-    <script type="text/javascript" src="./js/script.js"></script>
-    <script type="text/javascript">
-		new fullScroll({
-			displayDots: true,
-			dotsPosition: 'left',
-			animateTime: 0.7,
-			animateFunction: 'ease'
-		});
-    </script>
+        <div class="fade3">
+        <div id="de_inter">
+            <img src="./img/inter.gif" />
+            <p>전체적인 UI 요소들은 정보안내/전달을 위해 깔끔하고 믿음이 가게<br />디자인하되, 젊은 타겟층을 위해 <span>일러스트</span>와 <span>인터랙션</span>으로 재미를<br />주었습니다.</p>
+        </div>
+        </div>
+    </div>
+
+    <div class="app">
+        <div id="ap_title">Application</div>
+            <div id="ap_fu">Function
+                <p id="fun">맞춤형 프로세스를 제공받을 수 있습니다.</p>
+                <p id="fun2">운전면허 취득과정에 맞추어 수험생이 해야할 단계를 제시해주고 이행할 수 있게 도와줍니다.<br />사용자와 커뮤니케이션 하는 듯한 느낌을 주고자 하였습니다. 사용자가 다음 과정을 직접 찾지 않아도 알아서 제시해 줍니다.</p>
+            </div>
+
+        <img src="./img/simain.png" id="si" />
+
+        <div class="slidebanner">
+            <ul class="bannerbox">    
+                <li><img src="./img/si1.png" alt="dw" /></li>
+                <li><img src="./img/si2.png" alt="dw" /></li>
+                <li><img src="./img/si3.png" alt="dw" /></li>
+                <li><img src="./img/si4.png" alt="dw" /></li>
+                <li><img src="./img/si5.png" alt="dw" /></li>
+                <li><img src="./img/si6.png" alt="dw" /></li>
+                <li><img src="./img/si7.png" alt="dw" /></li>
+                <li><img src="./img/si8.png" alt="dw" /></li>
+                <li><img src="./img/si9.png" alt="dw" /></li>
+                <li><img src="./img/si10.png" alt="dw" /></li>
+                <li><img src="./img/si11.png" alt="dw" /></li>
+                <li><img src="./img/si12.png" alt="dw" /></li>
+                <li><img src="./img/si13.png" alt="dw" /></li>
+                <li><img src="./img/si14.png" alt="dw" /></li>
+                <li><img src="./img/si15.png" alt="dw" /></li>
+                <li><img src="./img/si16.png" alt="dw" /></li>
+            </ul>                
+        </div>
+
+        <div id="slide" class="box">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <img class="d-block img-fluid" src="./img/bsi1.png" alt="First slide">
+                </div>
+                    <div class="carousel-item">
+                        <img class="d-block img-fluid" src="./img/bsi2.png" alt="Second slide">
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"><img src="./img/left.png" /></span>
+                    <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"><img src="./img/right.png" />
+                    <span class="sr-only">Next</span>
+                    </a>
+            </div>
+            </div>
+        </div>
+
+        <div class="feedback">
+            <div class="feedback_inner"></div>
+            <div id="feedback1"><img src="./img/feedback1.png" /></div>
+            <a id="click">Click!</a>
+            <div id="feedback2"><img src="./img/feedback2.png" /></div>
+            <div id="feedback3"><img src="./img/feedback3.png" /></div>
+            <div id="feedback4"><img src="./img/feedback4.png" /></div>
+        </div>
+
+
+        <div class="qrcord">
+            <img src="./img/qr.gif" />
+            <div id="qrcord">QR코드로 하는 간편한 출석체크!
+                <p>기존의 출석카드는 분실 위험이 있으며 챙기지 않으면 출석을 하지 못하는<br />단점이 있습니다. 그 단점을 보완하기 위해 카드를 QR코드로 대체합니다.</p>
+            </div>
+        </div>
+
+        <div class="com">
+            <div class="com_inner"></div>
+            <div id="com">커뮤니티를 통해 합격 비결을 알아보세요.
+                <p>다른 사람들과의 소통을 통해 꿀팁, 고민, 합격 비법 등을 공유받고 공유 할 수 있습니다.</p>
+                <img src="./img/comm4.png" />
+                <img src="./img/comm2.png" />
+                <img src="./img/comm3.png" />
+                <img src="./img/comm1.png" />
+            </div>
+        </div>
+    </div>
+
+    <div class="others">
+        <div id="others">
+            기타부가기능
+            <div class="img_ch">
+            <div id="img_ch">
+            <img class="ho1" id="ho1" src="./img/ho1.png" />
+            <img class="ho1" id="ho1_hv" src="./img/ho1_hv.png" />
+            <p id="ch_p1">위치 연동서비스를 통하여<br />셔틀버스 위치 확인이 가능하고 호출이 가능합니다.</p>
+            </div>
+            <div id="img_ch2">
+            <img class="ho2" id="ho2" src="./img/ho2.png" />
+            <img class="ho2" id="ho2_hv" src="./img/ho2_hv.png" />
+            <p id="ch_p2">학원과 사용자가 채팅을 통하여<br />실시간 상담이 가능합니다.</p>
+            </div>
+            <div id="img_ch3">
+            <img class="ho3" id="ho3" src="./img/ho3.png" />
+            <img class="ho3" id="ho3_hv" src="./img/ho3_hv.png" />
+            <p id="ch_p3">학원 정보와 사용자들의 후기를 통하여<br />학원 선택에 도움을 줍니다.</p>
+            </div>
+            <div id="img_ch4">
+            <img class="ho4" id="ho4" src="./img/ho4.png" />
+            <img class="ho4" id="ho4_hv" src="./img/ho4_hv.png" />
+            <p id="ch_p4">수강 후 강사 후기를 통하여<br />강사에 대한 정보를 알 수 있게 합니다.</p>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="mock">
+        <div class="mock_inner"></div>
+        <div class="mock_fade">
+        <div id="mock_ap">낙후된 운전면허학원 시스템 개선 앱 서비스 '따고'</div>
+        <div id="mock_title">이제는 나에게 맞는 <span>맞춤 교육</span>으로<br /><span>간편하게</span> 면허를 따보세요!</div>
+        <div id="mock_pl">
+            <a href="#">기획서 다운로드</a>
+        </div>
+        <div id="mock_pr">
+            <a href="https://cloud.protopie.io/p/8cc470c365" target="_blank">프로토타입</a>
+        </div>
+        </div>
+    </div>
+
+    <div class="team">
+        <div class="team_inner"></div>
+            <img src="./img/1722pa.png" />
+        <div id="te_title">Team. 1722</div>
+        <div class="img_te">
+            <div id="img_te">
+            <img class="te1" id="te1" src="./img/sy1.png" />
+            <img class="te1" id="te1_hv" src="./img/sy2.png" />
+            <p id="te_p1"><span>안선영(AN SEON YEONG)</span><br />UI/UX Planner(PM)</p>
+            </div>
+            <div id="img_te2">
+            <img class="te2" id="te2" src="./img/ha1.png" />
+            <img class="te2" id="te2_hv" src="./img/ha2.png" />
+            <p id="te_p2"><span>안현아(AN HYUN AH)</span><br />UI/UX Designer</p>
+            </div>
+            <div id="img_te3">
+            <img class="te3" id="te3" src="./img/hr1.png" />
+            <img class="te3" id="te3_hv" src="./img/hr2.png" />
+            <p id="te_p3"><span>유혜린(YOO HYE RIN)</span><br />UI/UX Designer</p>
+            </div>
+            <div id="img_te4">
+            <img class="te4" id="te4" src="./img/wk1.png" />
+            <img class="te4" id="te4_hv" src="./img/wk2.png" />
+            <p id="te_p4"><span>이원경(LEE WON KYOUNG)</span><br />UI/UX Designer</p>
+            </div>
+            <div id="img_te5">
+            <img class="te5" id="te5" src="./img/yh1.png" />
+            <img class="te5" id="te5_hv" src="./img/yh2.png" />
+            <p id="te_p4"><span>이윤희(LEE YOON HEE)</span><br />Developer</p>
+            </div>
+            </div>
+    </div>
+
+<script src="./js/script.js" type="text/javascript"></script>
+<script src="./js/bootstrap.js" type="text/javascript"></script>
 </body>
 </html>
