@@ -68,6 +68,14 @@
 .home{
     position: absolute;
 }
+#app_p{
+    position: absolute;
+    margin-top: 270px;
+    width: 400px;
+    margin-left: 310px;
+    font-size: 18px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
 #home_title{
     position: relative;
     margin-top: 300px;
