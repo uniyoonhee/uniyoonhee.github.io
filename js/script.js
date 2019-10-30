@@ -109,7 +109,7 @@ $(window).scroll( function(){
         bottom_of_window = $(window).scrollTop() + $(window).height();
                 
         if( bottom_of_window > bottom_of_element ){
-            $(this).animate({'opacity':'1','margin-top':'0px'},1000);
+            $('.fade2').animate({'opacity':'1','margin-top':'0px'},1200);
         }
     }); 
     $('.fade3').each( function(i){
@@ -118,7 +118,7 @@ $(window).scroll( function(){
         bottom_of_window = $(window).scrollTop() + $(window).height();
                 
         if( bottom_of_window > bottom_of_element ){
-            $(this).animate({'opacity':'1','margin-top':'0px'},1000);
+            $('#de_inter').animate({'opacity':'1','margin-top':'1150px'},1000);
         }
                 
     }); 
@@ -132,15 +132,13 @@ $(window).scroll( function(){
         }
                 
     }); 
-    $('.com').each( function(i){
-            
+    $('.com_inner').each( function(i){
         bottom_of_element = $(this).offset().top + $(this).outerHeight();
         bottom_of_window = $(window).scrollTop() + $(window).height();
                 
         if( bottom_of_window > bottom_of_element ){
-            $(this).animate({'opacity':'1','margin-top':'0px'},1200);
-        }
-                
+            $('#com').animate({'opacity':'1','margin-top':'780px'},1000)
+        }    
     }); 
     $('.mock_fade').each( function(i){
             
