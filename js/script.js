@@ -48,6 +48,11 @@ $(document).mousemove(function(e) {
 });
 // 마우스 패럴랙스
 
+// 일러스트
+TweenMax.to('#bg7', 2, {x: 30,repeat: -1,yoyo: true,ease: Sine.easeInOut,force3D: true});
+TweenMax.to('#bg7', 1.5, {y: -12,repeat: -1,yoyo: true,ease: Sine.easeInOut,force3D: true});
+// 일러스트
+
 // 자동 슬라이드
 timer();
 var current=16;
@@ -87,13 +92,13 @@ $(window).scroll( function(){
             $(this).animate({'opacity':'1','margin-top':'-110px'},1000);
         }  
     }); 
-    $('.strategy2 div').each( function(i){
+    $('.strategy2').each( function(i){
         bottom_of_element = $(this).offset().top + $(this).outerHeight();
         bottom_of_window = $(window).scrollTop() + $(window).height();
             
         if( bottom_of_window > bottom_of_element ){
-            $(this).animate({'opacity':'1','margin-top':'0px'},1000);
-        }  
+            $('.strategy2 img').animate({'opacity':'1','margin-left':'0px'},1300);
+        }
     }); 
     $('.fade1').each( function(i){
         bottom_of_element = $(this).offset().top + $(this).outerHeight();
@@ -194,3 +199,6 @@ $img4.on('mouseover', function(e){
 // 마우스 이벤트
 
 });
+
+
+
