@@ -71,9 +71,9 @@
 #app_p{
     position: absolute;
     margin-top: 280px;
-    width: 400px;
+    width: 500px;
     margin-left: 223px;
-    font-size: 20px;
+    font-size: 25px;
     font-family: 'Noto Sans KR', sans-serif;
 }
 #home_p{
@@ -304,6 +304,9 @@
     margin-top: 300px;
     margin-left: -200px;
     opacity: 0;
+}
+.str{
+    margin-left: -80px;
 }
 .strategy3{
     margin-top: 350px;
@@ -880,7 +883,7 @@
     line-height: 50px;
     text-align: center;
     background-color: #02d1c9;
-    border-radius: 30px;
+    border-radius: 15px;
     box-shadow:none;
     margin-top: 50px;
     margin-left: 760px;
@@ -902,7 +905,7 @@
     line-height: 50px;
     text-align: center;
     background-color: #02d1c9;
-    border-radius: 30px;
+    border-radius: 15px;
     box-shadow:none;
     margin-top: 50px;
     margin-left: 990px;

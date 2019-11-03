@@ -5,12 +5,12 @@ var lastScrollTop = 0, delta = 15;
     var st = $(this).scrollTop();
     if (Math.abs(lastScrollTop - st) <= delta) return;
     if ((st > lastScrollTop) && (lastScrollTop > 0)) {
-        $("header").css({
-            "top": "-80px"
+        $('header').css({
+            'top': '-80px'
         });
     }else {
-        $("header").css({
-            "top": "0"
+        $('header').css({
+            'top': '0'
         });
     }
     lastScrollTop = st;
@@ -49,8 +49,12 @@ $(document).mousemove(function(e) {
 // 마우스 패럴랙스
 
 // 일러스트
-TweenMax.to('#bg7', 2, {x: 30,repeat: -1,yoyo: true,ease: Sine.easeInOut,force3D: true});
-TweenMax.to('#bg7', 1.5, {y: -12,repeat: -1,yoyo: true,ease: Sine.easeInOut,force3D: true});
+TweenMax.to('#bg7', 2, {
+    x: 30,repeat: -1,yoyo: true,ease: Sine.easeInOut,force3D: true
+});
+TweenMax.to('#bg7', 1.5, {
+    y: -12,repeat: -1,yoyo: true,ease: Sine.easeInOut,force3D: true
+});
 // 일러스트
 
 // 자동 슬라이드
@@ -65,9 +69,9 @@ function timer(){
 }
 
 function slide(){
-    $(".bannerbox").animate({left:"-=393px"},3000,function(){
-        $(this).css({"left":0});
-        $(".bannerbox").append( $(".slidebanner ul").children(".bannerbox li").eq(0) );
+    $('.bannerbox').animate({left:'-=393px'},3000,function(){
+        $(this).css({'left':0});
+        $('.bannerbox').append( $('.slidebanner ul').children('.bannerbox li').eq(0) );
     });    
     current++;
     if(current==16)current=0;
@@ -159,11 +163,11 @@ $(window).scroll( function(){
 // 페이드 인
 
 // 클릭
-$( "a#click" ).click(function(e) {
-    $(".feedback a").detach();
-    $( "div#feedback2" ).fadeIn( 1600, function() {
-      $( "div#feedback3" ).fadeIn( 1600,function() {
-        $( "div#feedback4" ).fadeIn(1600)
+$( 'a#click' ).click(function(e) {
+    $('.feedback a').detach();
+    $( 'div#feedback2' ).fadeIn( 1600, function() {
+      $( 'div#feedback3' ).fadeIn( 1600,function() {
+        $( 'div#feedback4' ).fadeIn(1600)
       });
     });
     return false;
