@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
+*{
+    margin: 0;
+    padding-top: 0;
+}
+/* body::-webkit-scrollbar {
+    display: none;
+  } */
+#fixed_menu{
+    width:100%;
+	height:80px;
+    position:fixed;    /*위치 fixed*/
+    top: -80px;
+    z-index: 999;  
+    background-color: #fff;
+    transition: top .25s ease .2s;
+}
+#logo{
+    float: left;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+#main_menu{
+    float: right;
+    list-style: none;
+    margin-top: 15px;
+    margin-right: 20px;
+}
+#main_menu li{
+    display: inline;
+    font-size: 20px;
+    color: #4c4c4c;
+    padding-right: 15px;
+    padding-left: 10px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+#main_menu li a{
+    text-decoration: none;
+    color: #4c4c4c;
+}
+#Main a:hover{
+    color: #40947d;
+}
+#About a:hover{
+    color: #40947d;
+}
+#Video a:hover{
+    color: #40947d;
+}
+#Function a:hover{
+    color: #40947d;
+}
+#Team a:hover{
+    color: #40947d;
+}
+#myvideo {
+    right: 0;
+    bottom: 0;
+    width: 1920px; 
+    height: 975px;
+}
+#slide1{
+    width: 1903px;
+    height: 1080px;
+    background-image: url("../image/background1.png");
+    position: relative;
+}
+#intro_1{
+    position: absolute;
+    top: 33%;
+    left: 6%;
+}
+#intro_2{
+    position: absolute;
+    top: 49%;
+    left: 6%;
+}
+#slide3{
+    widows: 1903px;
+    height: 990px;
+    background-image: url("../image/back_device.png");
+    position: relative;
+}
+#device_title{
+    position: absolute;
+    top: 10%;
+    left: 40%;
+}
+#device_left{
+    position: absolute;
+    top: 20%;
+    left: 3.5%;
+}
+#device_explain{
+    position: absolute;
+    top: 38%;
+    left: 1.8%;
+    margin-top: 100px;
+    opacity: 0;
+}
+#device_plants{
+    position: absolute;
+    top: 38%;
+    left: 52%;
+    margin-top: 100px;
+    opacity: 0;
+}
+#slide4{
+	width: 1903px;
+    height: 990px;
+    background-image: url("../image/back_app.png");
+    position: relative;
+}
+#app_left{
+	position: absolute;
+	top: 15%;
+	left: 2%;
+}
+#app_nemo{
+    position: absolute;
+	top: 23%;
+	left: 12%;
+}
+#phone{
+    position: absolute;
+	top: 28%;
+	left: 22%;
+}
+#app_title{
+    position: absolute;
+	top: 38%;
+	left: 47%;
+}
+#frients_state{
+    position: absolute;
+	top: 46%;
+	left: 46%;
+}
+#slide5{
+	width: 1903px;
+    height: 990px;
+    background-color: #fff;
+    position: relative;
+}
+#state_1{
+    position: absolute;
+    top: 20.3%;
+    left: 9%;
+    margin-left: -300px;
+}
+#state_2{
+    position: absolute;
+    top: 20%;
+    left: 24.7%;
+    margin-left: -200px;
+}
+#state_3{
+    position: absolute;
+    top: 19.7%;
+    left: 41%;
+    margin-left: -100px;
+}
+#title1{
+    position: absolute;
+    top: 21%;
+    left: 60%;
+}
+#explain1{
+    position: absolute;
+    top: 26.5%;
+    left: 60%;
+}
+#explain_img1{
+    position: absolute;
+    top: 43%;
+    left: 60%;
+}
+#explain_img2{
+    position: absolute;
+    top: 42%;
+    left: 71.5%;
+}
+#level1{
+    position: absolute;
+    top: 42%;
+    left: 77%;
+}
+#level2{
+    position: absolute;
+    top: 50%;
+    left: 77%;
+}
+#level3{
+    position: absolute;
+    top: 58.5%;
+    left: 77%;
+}
+#level4{
+    position: absolute;
+    top: 67%;
+    left: 77%;
+}
+#level5{
+    position: absolute;
+    top: 75%;
+    left: 77%;
+}
+#slide6{
+	width: 1903px;
+    height: 990px;
+    background-image: url("../image/background3.png");
+    position: relative;
+}
+#info_img{
+    position: absolute;
+    top: 17%;
+    left: 8.5%;
+    margin-left: -200px;
+}
+#state_title{
+    position: absolute;
+    top: 22%;
+    left: 64%;
+}
+#state_explain{
+    position: absolute;
+    top: 28%;
+    left: 64%;
+}
+#sl6{
+    position: absolute;
+    top: 43.5%;
+    left: 64%;
+}
+#state_water{
+    position: absolute;
+    top: 45%;
+    left: 66%;
+}
+#state_sunshine{
+    position: absolute;
+    top: 45%;
+    left: 77%;
+}
+#state_teperature{
+    position: absolute;
+    top: 45%;
+    left: 88%;
+}
+#state_wind{
+    position: absolute;
+    top: 66%;
+    left: 66%;
+}
+#state_soil{
+    position: absolute;
+    top: 67%;
+    left: 77%;
+}
+#state_waterqulity{
+    position: absolute;
+    top: 67%;
+    left: 88%;
+}
+#slide7{
+	width: 1903px;
+    height: 900px;
+    background-color: #fff;
+    position: relative;
+}
+#profile_img{
+    position: absolute;
+    top: 16%;
+    left: 17%;
+    margin-top: 100px;
+    opacity: 0;
+}
+#profile_title{
+    position: absolute;
+    top: 40%;
+    left: 53%;
+    margin-top: 100px;
+    opacity: 0;
+}
+#profile_explain{
+    position: absolute;
+    top: 57%;
+    left: 53%;
+    margin-top: 150px;
+    opacity: 0;
+}
+#slide8{
+	width: 1903px;
+    height: 990px;
+    background-image: url("../image/background4.png");
+    position: relative;
+}
+#smartlens_title{
+    position: absolute;
+    top: 14%;
+    left: 31%;
+}
+#smartlens_explain{
+    position: absolute;
+    top: 20%;
+    left: 25.5%;
+}
+#camera_img{
+    position: absolute;
+    top: 35%;
+    left: 7.8%;
+}
+#slide9{
+	width: 1903px;
+    height: 900px;
+    background-color: #fff;
+    position: relative;
+}
+#team{
+    position: absolute;
+    top: 18%;
+    left: 47%;
+}
+#footer1{
+    position: absolute;
+    top: 32%;
+    left: 15%;
+}
+#footer1_text{
+    position: absolute;
+    top: 71%;
+    left: 19.8%;
+}
+#footer2{
+    position: absolute;
+    top: 32%;
+    left: 42.5%;
+}
+#footer2_text{
+    position: absolute;
+    top: 71%;
+    left: 47.5%;
+}
+#footer3{
+    position: absolute;
+    top: 32%;
+    left: 71%;
+}
+#footer3_text{
+    position: absolute;
+    top: 71%;
+    left: 76%;
+}
